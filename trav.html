@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traveller.com</title>
+    <style>
+       * {
+            margin: 0;
+            padding: 0;
+         
+         }
+         .background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 190%;
+      background: url("back2.jpg" ); /* Replace 'your-background-image.png' with the path to your background image */
+      z-index: -1; /* Send the background image to the back */
+      }
+
+    img.logo {
+    width: auto;
+    height: 120px;
+    max-width: 150px;
+    position: relative;
+    z-index: 1; /* Bring the logo to the front */
+    }
+
+     header {
+         background-color: rgb(61, 59, 59);
+            align-items: center;
+           
+        }
+
+        img.logo {
+             width: auto; /* Set width to auto to maintain aspect ratio */
+             height: 120px; /* Increase the logo height */
+            max-width: 150px; /* Increase the maximum width of the logo */
+             /* Add border-radius for a rounded corner effect */
+             backdrop-filter: blur(8px); 
+            }
+
+        h1 {
+            font-size: 40px;
+            color: white;
+            text-align: center;
+            margin:  -60px 0 10px 0; 
+           }
+
+        h1:hover {
+            color: chocolate
+        }
+
+        p {
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            
+        }
+        .logo{
+            font-family: 'Arial Black', sans-serif; 
+            background-color:#666
+            } 
+        nav {
+            background-color: #444;
+            padding: 2em;
+            text-align: center;
+    
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 1em;
+            transition: background-color 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: #666; /* Change the background color on hover */
+        }
+          
+    nav a::after{
+      content: '';
+    height: 3px;
+    width: 0;
+    background: #009688;
+    position: absolute;
+    left: 0;
+    bottom :-10px;
+    transition: 0.5s;
+   }
+   nav a:hover::after{
+      width:100%
+
+   }
+   .suggestion-button:hover {
+       background-color: #990000; /* Change the background color on hover */
+    }
+
+    .suggestion-button:before,
+    .suggestion-button:after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 0;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .suggestion-button:before {
+            top: 0;
+            left: 0;
+        }
+
+        .suggestion-button:after {
+            bottom: 0;
+            right: 0;
+        }
+
+        .suggestion-button:hover:before,
+        .suggestion-button:hover:after {
+            width: 50%;
+        }
+        .dropdown {
+            display: inline-block;
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            text-align: left;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+        section {
+            padding: 1em;
+       
+        }
+
+        .search-bar  {
+            display: flex;
+            padding: 0.8em;
+            margin: 1em 0;
+            border: none;
+            border-radius: 4px;
+            align-items: center;
+           justify-content: center;
+        }  
+        .search-bar input {
+            padding: 0.8em; 
+        }
+
+        .search-bar select {
+            margin-right: 0.8em;
+        }
+
+
+        .suggestion-button {
+            display: block;
+            margin: 1em auto;
+            padding: 0.5em 1em;
+            background-color: #e74c3c;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .locations {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+
+            max-width: 1200px; /* Set your preferred maximum width */
+            margin: 0 auto;   
+        }
+
+        .location-card {
+            margin: 1em;
+            padding: 1em;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            max-width: 300px;
+            z-index: 1;
+            background-color: #fff; 
+        }
+        
+        .location-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 1em;
+        }
+        .about-us-content {
+            display: none;
+            padding: 1em;
+        }
+        .about-content {
+            padding: 20px;
+            text-align: center;
+        }
+        footer{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            flex-flow: row wrap;
+            padding: 10px;
+            color: #ffff;
+            background-color: #333;
+            align-items: left;
+        }
+        .footer > *{
+            flex: 1 50%;
+        }
+        .footer-left{
+            margin-right: 1.25em;
+            margin-bottom: 2em;
+            align-items: left;
+            text-align: left;
+        }
+         .footer-left img{ 
+          width: 50%;
+        }
+        h2{
+            font-weight: 600;
+            font-size: 17px;
+        }
+        .footer ul{
+            list-style: none;
+            padding-left: 0;
+        }
+        .footer li{
+            line-height: 2em;
+        }
+        .footer a{
+         text-decoration: none;
+        }
+        .footer-right{
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            flex-flow: row wrap;
+            align-items: left;
+            grid-area: 500px;
+        }
+        .footer-right > *{
+            flex 0 50px;
+            margin-left: 1.25em;
+            text-align: left;
+            font-size: 15px;
+            padding: 3%;
+        }
+        .box a{
+            color:#999;
+        }
+         .footer-bottom{
+            text-align:center;
+            color: #999;
+            padding-bottom: 30px;
+            font-size: 20px;
+        }
+        .footer-left p{
+            padding-right: 20%;
+            color: #999;
+        }
+        .socials a{
+            background: #364a62;
+            width: 40px;
+            height: 40px;
+            display:inline-block;
+            margin-left: 10px;
+            align-items: center;
+        }
+        .socials a i{
+            color: #e7f2f4;
+            padding: 10px 12px;
+            font-size: 20px;
+        }
+        @media screen and(min-width: 600px){
+            .footer-right > *{
+                flex: 1;
+            }
+            .footer-left{
+                flex: 1 0px;
+            }
+            .footer-right{
+                flex: 2 0px;
+            }
+        
+            @media (max-width; 600px) {
+                .footer{
+                    padding: 15px;
+                }
+                main{
+                    font-size: 55px;
+                }
+                }   
+        }
+        .slider-container {
+            max-width: 500px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-item {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .slider img {
+            width: 100%;
+            height: auto;
+        }
+
+        .slider-text {
+            padding: 10px;
+            text-align: center;
+            background-color: #333;
+            color: white;
+        }
+        
+    </style> 
+</head>
+<body>
+    <header>
+        <div class="background-image"></div>
+        <img src="travlogo2.png" alt="Traveller.com Logo" class="logo">
+        <h1>Traveller.com</h1>
+        <p>Plane now, go now, enjoy now</p>
+    </header>
+    
+    <nav>
+        
+        <a href="#">Home</a>
+       
+        <div class="dropdown">
+            <a href="#">Vlog</a>
+            <div class="dropdown-content">
+                <a href="#">Adventure</a>
+                <a href="#">City Tours</a>
+                <a href="#">Cuisine</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <a href="#">Blogs</a>
+            <div class="dropdown-content">
+                <a href="#">Travel Tips</a>
+                <a href="#">Destination Reviews</a>
+                <a href="#">Cultural Insights</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+        <a href="aboutus.html">About Us</a>
+          </div> 
+        
+        <div class="dropdown">
+            <a href="#" class="dropbtn">Contact Us</a>
+            <div class="dropdown-content">
+                <a href="#">+918766431901</a>
+                <a href="#">+918411095371</a>
+            </div>
+        </div>
+        
+        <a href="#">Feedback</a>
+        
+        
+        <div class="dropdown"> 
+            <a href="contactus.html"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+              </svg></br>Account</a>
+            
+        </div>
+    </nav>
+    </nav>
+    <section>
+        <div class="search-bar">
+            <input type="text" placeholder="Search locations">
+            <select>
+                <option value="india">India</option>
+                <option value="us">US</option>
+                <option value="uk">UK</option>
+                <option value="srilanka">Sri Lanka</option>
+                <option value="australia">Australia</option>
+            </select>
+        </div>
+
+        <button class="suggestion-button" onclick="giveSuggestions()">Give Me Suggestions ✔</button>
+
+        
+
+        <div class="locations">
+            <!-- Example location card -->
+            <div class="location-card">
+                <img src="delhi.jpg" alt="Delhi">
+                <h3>Delhi, India</h3>
+                <dl>
+                    <h3>Tourist Places</h3>
+                    <dt>▶Jama Masjid</dt>
+                    <span>▶Lotus Temple</span>
+                    <dt>▶Humayun's Tomb</dt>
+                </dl>
+                    
+           <p> <button onclick="showDetails('delhi')">More Details</button> 
+            </div>  
+
+
+            <!-- Repeat the above card structure for other locations -->
+            <!-- Example: Mumbai -->
+            <div class="location-card">
+                <img src="mumbai.jpg" alt="Mumbai">
+                <h3>Mumbai, India</h3>
+                <dl>
+                    <h3>Tourist Places</h3>
+                    <dt>▶Marine Drive</dt>
+                    <span>▶Juhu</span>
+                    <dt>▶Tajhotel</dt>
+                </dl>
+           
+           <p><button onclick="showDetails('Mumbai')">More Details</button>
+            </div>
+
+            <!-- Example: Pune -->
+            <div class="location-card">
+                <img src="pune.jpg" alt="Pune">
+                <h3>Pune, India</h3>
+                <dl>
+                    <h3>Tourist Places</h3>
+                    <dt>▶Shaniwar Wada</dt>
+                    <span>▶Sinhagad Fort</span>
+                    <dt>▶Lal Mahal</dt>
+                </dl>
+             <p><button onclick="showDetails('pune')">More Details</button>
+            </div>
+        </div>
+        
+        <div class="locations">
+            <!-- Example location card -->
+            <div class="location-card">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.K3IT2wsdL4cm7hHZ91MAmQHaEK&pid=Api&P=0&h=180.jpg" alt="Delhi">
+                <h3>Kolkata, India</h3>
+                <dl>
+                    <h3>Tourist Places</h3>
+                    <dt>▶Gurudwara Sant Kutiya</dt>
+                    <span>▶Nakhoda</span>
+                    <dt>▶Adi Brahmo Samaj</dt>
+                </dl>
+         <p><button onclick="showDetails('Kolkata')">More Details</button> 
+            </div>  
+            
+            <div class="locations">
+                <!-- Example location card -->
+                <div class="location-card">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.54QvcmeL6EVZwkgmMFH2dQHaD4&pid=Api&P=0&h=180.jpg" alt="">
+                    <h3>Bengluru, India</h3>
+                    <dl>
+                        <h3>Tourist Places</h3>
+                        <dt>▶Bull Temple</dt> 
+                        <dt>▶Gavi Temple</dt>
+                        <dt>▶Lalbagh Botanical garden</dt> 
+                    </dl>
+                <p><button onclick="showDetails('Bengluru')">More Details</button> 
+                </div>  
+                
+                <div class="locations">
+                    <!-- Example location card -->
+                    <div class="location-card">
+                        <img src="https://tse4.mm.bing.net/th?id=OIP.Bnm3tyWboOV6bjPWbLNhWgFZC1&pid=Api&P=0&h=180.jpg" alt="Delhi">
+                        <h3>Nagpur, India</h3>
+                        <dl>
+                            <h3>Tourist Places</h3>
+                            <dt>▶Deekshabhoomi</dt>
+                            <span>▶Maharajbagh Zoo</span>
+                            <dt>▶Sai Mandir</dt>
+                        </dl>
+                            
+                   <p><button onclick="showDetails('Nagpur')">More Details</button> 
+                    </div>       
+        
+    </section>
+    
+    <footer class="footer">
+        <main>
+            Telphatech
+        </main>
+        <footer class="footer">
+            <!-- <div class="footer-left">
+                <p></p>
+                <div class="socials">
+                    <a href="#"><i class=" fa-facebook"></i></a>
+                    <a href="#"><i class=" fa-twitter"></i></a>
+                    <a href="#"><i class="fa-instagram"></i></a>
+                    <a href="#"><i class=" fa-youtube"></i></a>
+                </div> -->
+            </div>
+            <ul class="footer-right">
+                <li>
+                    <h2>What we do</h2>
+                    <ul class="box">
+                        <li><a href="#">provide home</a></li>
+                        <li><a href="#">low Pricing</a></li>
+                        <li><a href="#">full accurancy</a></li>
+                    </ul>
+                </li>
+                <li class="features">
+                    <h2>Useful Links</h2>
+                    <ul class="box">
+                        <li><a href="#">blog</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Sales</a></li>
+                        <li><a href="#">Tickets</a></li>
+                        <li><a href="#">certifications</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h2>Address</h2>
+                    <ul class="box">
+                        <li><a href="#">127,westwood Lane</a></li>
+                        <li><a href="#">DA15 9ps,Sidcup</a></li>
+                        <li><a href="#">London</a></li>
+                        <li><a href="#">united Kingdom</a></li><br>
+                    </ul>
+                </li>
+            </ul>       
+        </footer>
+        <div class="footer-bottom">
+            <p>All Right reserved by &copy;conceptial 2023</p>
+        </div>
+    </footer>
+    </body>
+</html>
+   
+
+    <script>
+        function giveSuggestions() {
+            // Add logic for suggestions
+            alert("Suggestions will be provided here.");
+        }
+        
+         function showDetails(city) {
+            // Open a new details page based on the city
+           window.location.href = `${city}_details.html`;
+        }
+        
+    
+    </script>
+</body>
+</html>
